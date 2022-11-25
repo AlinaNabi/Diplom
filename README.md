@@ -20,3 +20,12 @@ ___
   `./gradlew clean test -Durl=jdbc:mysql://localhost:3306/app`
 * Для PostgreSQL:  
   `./gradlew clean test -Durl=jdbc:postgresql://localhost:5432/app`
+7. Создать отчёт Allure  
+   `.\gradlew allureServe`
+8. Для завершения работы allureServe выполнить команду
+   `Ctrl+C`
+9. Перейти в первый терминал
+10. Остановить приложение
+    `Ctrl+C`
+11. Для остановки работы контейнеров выполнить команду  
+    `docker-compose down`
