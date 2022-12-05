@@ -5,24 +5,23 @@ import ru.netology.data.DataHelper;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.hidden;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
-import static ru.netology.page.MainPage.*;
 
 public class PaymentPage {
-    public void payDebitCard() {
-        buttonBuy.click();
-        buttonDebit.shouldBe(visible);
-    }
+//    public void payDebitCard() {
+//        buttonBuy.click();
+//        buttonDebit.shouldBe(visible);
+//    }
+//
+//    public void buyCreditCard() {
+//        buttonBuyWithCredit.click();
+//        buttonCredit.shouldBe(visible);
+//    }
 
-    public void buyCreditCard() {
-        buttonBuyWithCredit.click();
-        buttonCredit.shouldBe(visible);
-    }
-
+    protected static final SelenideElement formHeader = $x("//form//preceding-sibling::h3");
     private final SelenideElement cardNumberField = $x("//input[@placeholder='0000 0000 0000 0000']");
     private final SelenideElement monthField = $x("//input[@placeholder='08']");
     private final SelenideElement yearField = $x("//input[@placeholder='22']");
@@ -55,45 +54,23 @@ public class PaymentPage {
         buttonContinue.click();
     }
 
-    public void sendingNotValidData (DataHelper.CardInfo info) {
-        cardNumberField.setValue(info.getNumber());
-        monthField.setValue(info.getMonth());
-        yearField.setValue(info.getYear());
-        ownerField.setValue(info.getHolder());
-        cvcField.setValue(info.getCvc());
-        buttonContinue.click();
+
+    public void sendingValidDataWithFieldCardNumberError (String error) {
+        fieldCardNumberError.shouldHave(text(error)).shouldBe(visible);
     }
 
-    public void sendingValidDataWithFieldCardNumberError () {
-        fieldCardNumberError.shouldBe(visible);
-        fieldMonthError.shouldBe(hidden);
-        fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
-        fieldCvcError.shouldBe(hidden);
+    public void sendingValidDataWithFakerCardNumber (String error) {
+        notificationError.shouldHave(text(error)).shouldBe(visible);
     }
 
-    public void sendingValidDataWithFakerCardNumber () {
-        fieldMonthError.shouldBe(hidden);
-        fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
-        fieldCvcError.shouldBe(hidden);
-        notificationError.shouldBe(visible, Duration.ofSeconds(15));
+    public void sendingValidDataWithFieldMonthError (String error) {
+        fieldMonthError.shouldHave(text(error)).shouldBe(visible);
+
     }
 
-    public void sendingValidDataWithFieldMonthError () {
-        fieldCardNumberError.shouldBe(hidden);
-        fieldMonthError.shouldBe(visible);
-        fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
-        fieldCvcError.shouldBe(hidden);
-    }
+    public void sendingValidDataWithFieldYearError (String error) {
 
-    public void sendingValidDataWithFieldYearError () {
-        fieldCardNumberError.shouldBe(hidden);
-        fieldMonthError.shouldBe(hidden);
-        fieldYearError.shouldBe(visible);
-        fieldOwnerError.shouldBe(hidden);
-        fieldCvcError.shouldBe(hidden);
+        fieldYearError.shouldHave(text(error)).shouldBe(visible);
     }
 
     public void sendingEmptyNameValidData (DataHelper.CardInfo info) {
@@ -101,27 +78,21 @@ public class PaymentPage {
         monthField.setValue(info.getMonth());
         yearField.setValue(info.getYear());
         cvcField.setValue(info.getCvc());
-        buttonContinue.click();
-    }
-
-    public void sendingValidDataWithFieldNameError () {
-        fieldCardNumberError.shouldBe(hidden);
-        fieldMonthError.shouldBe(hidden);
-        fieldYearError.shouldBe(hidden);
+        pressButtonForContinue();
         fieldOwnerError.shouldBe(visible);
-        fieldCvcError.shouldBe(hidden);
     }
 
-    public void sendingValidDataWithFieldCVVError () {
-        fieldCardNumberError.shouldBe(hidden);
-        fieldMonthError.shouldBe(hidden);
-        fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
-        fieldCvcError.shouldBe(visible);
+    public void sendingValidDataWithFieldNameError (String error) {
+        fieldOwnerError.shouldHave(text(error)).shouldBe(visible);
+
+    }
+
+    public void sendingValidDataWithFieldCVVError (String error) {
+        fieldCvcError.shouldHave(text(error)).shouldBe(visible);
     }
 
     public void emptyForm() {
-        buttonContinue.click();
+        pressButtonForContinue();
         fieldCardNumberError.shouldBe(visible);
         fieldMonthError.shouldBe(visible);
         fieldYearError.shouldBe(visible);
