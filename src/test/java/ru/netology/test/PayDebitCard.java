@@ -25,7 +25,7 @@ public class PayDebitCard {
     }
     @BeforeEach
     public void openPage() {
-        SQLHelper.databaseCleanUp();
+
         open("http://localhost:8080");
         MainPage mainPage = new MainPage();
         debitPaymentPage = mainPage.pressPayDebitCardButton();
@@ -33,6 +33,7 @@ public class PayDebitCard {
 
     @AfterEach
     void cleanDB() {
+        SQLHelper.databaseCleanUp();
     }
 
     @AfterAll
