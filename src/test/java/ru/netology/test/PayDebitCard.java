@@ -80,7 +80,7 @@ public class PayDebitCard {
     void shouldEmptyFieldCardFormDebit() {
         var info = getEmptyCardNumber();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldCardNumberError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldCardNumberError("Неверный формат");
     }
 
     @Test
@@ -88,7 +88,7 @@ public class PayDebitCard {
     public void shouldOneNumberInFieldCardFormDebit() {
         var info = getOneNumberCardNumber();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldCardNumberError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldCardNumberError("Неверный формат");
     }
 
     @Test
@@ -96,7 +96,7 @@ public class PayDebitCard {
     public void shouldFifteenNumberInFieldCardNumberFormDebit() {
         var info = getFifteenNumberCardNumber();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldCardNumberError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldCardNumberError("Неверный формат");
     }
 
     @Test
@@ -104,7 +104,7 @@ public class PayDebitCard {
     public void shouldFakerCardNumberFormDebit() {
         var info = getFakerNumberCardNumber();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFakerCardNumber("declinedMsg");
+        debitPaymentPage.sendingValidDataWithFakerCardNumber("Ошибка! Банк отказал в проведении операции");
     }
 
 
@@ -113,7 +113,7 @@ public class PayDebitCard {
     public void shouldEmptyFieldMonthFormDebit() {
         var info = getEmptyMonth();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldMonthError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldMonthError("Неверный формат");
     }
 
     @Test
@@ -121,7 +121,7 @@ public class PayDebitCard {
     public void shouldOneNumberInFieldMonthFormDebit() {
         var info = getOneNumberMonth();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldMonthError("invalidData");
+        debitPaymentPage.sendingValidDataWithFieldMonthError("Неверный формат");
     }
 
     @Test
@@ -129,7 +129,7 @@ public class PayDebitCard {
     public void shouldFieldWithPreviousMonthFormDebit() {
         var info = getPreviousMonthInField();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldMonthError("expiredDate");
+        debitPaymentPage.sendingValidDataWithFieldMonthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -138,7 +138,7 @@ public class PayDebitCard {
     public void shouldFieldWithZeroMonthFormDebit() {
         var info = getZeroMonthInField();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldMonthError("invalidData");
+        debitPaymentPage.sendingValidDataWithFieldMonthError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -147,7 +147,7 @@ public class PayDebitCard {
     public void shouldFieldWithThirteenMonthFormDebit() {
         var info = getThirteenMonthInField();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldMonthError("invalidData");
+        debitPaymentPage.sendingValidDataWithFieldMonthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -155,7 +155,7 @@ public class PayDebitCard {
     public void shouldEmptyFieldYearFormDebit() {
         var info = getEmptyYear();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldYearError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldYearError("Неверный формат");
     }
 
     @Test
@@ -164,7 +164,7 @@ public class PayDebitCard {
     public void shouldPreviousYearFieldYearFormDebit() {
         var info = getPreviousYearInField();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldYearError("expiredDate");
+        debitPaymentPage.sendingValidDataWithFieldYearError("Истёк срок действия карты");
     }
 
     @Test
@@ -173,7 +173,7 @@ public class PayDebitCard {
     public void shouldPlusSixYearFieldYearFormDebit() {
         var info = getPlusSixYearInField();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldYearError("invalidData");
+        debitPaymentPage.sendingValidDataWithFieldYearError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -181,7 +181,7 @@ public class PayDebitCard {
     public void shouldEmptyFieldNameFormDebit() {
         var info = getApprovedCard();
         debitPaymentPage.sendingEmptyNameValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Поле обязательно для заполнения");
     }
 
 
@@ -191,7 +191,7 @@ public class PayDebitCard {
     public void shouldSpecialSymbolInFieldNameFormDebit() {
         var info = getSpecialSymbolInFieldName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -200,7 +200,7 @@ public class PayDebitCard {
     public void shouldNumberInFieldNameFormDebit() {
         var info = getNumberInFieldName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -209,7 +209,7 @@ public class PayDebitCard {
     public void shouldEnglishNameInFieldNameFormDebit() {
         var info = getRusName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -217,7 +217,7 @@ public class PayDebitCard {
     public void shouldOnlySurnameFormDebit() {
         var info = getOnlySurnameInFieldName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -226,7 +226,7 @@ public class PayDebitCard {
     public void shouldEmptyCVVInFieldCVVFormDebit() {
         var info = getEmptyCVVInFieldCVV();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldCVVError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldCVVError("Неверный формат");
     }
 
     @Test
@@ -235,7 +235,7 @@ public class PayDebitCard {
     public void shouldOneNumberInFieldCVVFormDebit() {
         var info = getOneNumberInFieldCVV();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldCVVError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldCVVError("Неверный формат");
     }
 
     @Test
@@ -244,6 +244,6 @@ public class PayDebitCard {
     public void shouldTwoNumberInFieldCVVАFormDebit() {
         var info = getOTwoNumberInFieldCVV();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldCVVError("wrongFormatMsg");
+        debitPaymentPage.sendingValidDataWithFieldCVVError("Неверный формат");
     }
 }

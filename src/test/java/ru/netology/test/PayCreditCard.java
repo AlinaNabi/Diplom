@@ -81,7 +81,7 @@ public class PayCreditCard {
     public void shouldEmptyFieldCardWithCredit()  {
         var info = getEmptyCardNumber();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldCardNumberError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldCardNumberError("Неверный формат");
     }
 
     @Test
@@ -89,7 +89,7 @@ public class PayCreditCard {
     public void shouldOneNumberInFieldCardNumberWithCredit() {
         var info = getOneNumberCardNumber();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldCardNumberError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldCardNumberError("Неверный формат");
     }
 
     @Test
@@ -97,15 +97,15 @@ public class PayCreditCard {
     public void shouldFifteenNumberInFieldCardNumberWithCredit() {
         var info = getFifteenNumberCardNumber();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldCardNumberError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldCardNumberError("Неверный формат");
     }
 
     @Test
-    @DisplayName("Покупка кредитной картой неизвестной картой при заполнения поля карты, остальные поля - валидные данные")
+    @DisplayName("Покупка кредитной картой не из БД, остальные поля - валидные данные")
     public void shouldFakerCardInFieldCardNumberWithCredit() {
         var info = getFakerNumberCardNumber();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFakerCardNumber("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFakerCardNumber("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -113,7 +113,7 @@ public class PayCreditCard {
     public void shouldEmptyFieldMonthWithCredit() {
         var info = getEmptyMonth();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldMonthError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldMonthError("Неверный формат");
     }
 
     @Test
@@ -121,7 +121,7 @@ public class PayCreditCard {
     public void shouldOneNumberInFieldMonthWithCredit() {
         var info = getOneNumberMonth();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldMonthError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldMonthError("Неверный формат");
     }
 
     @Test
@@ -129,7 +129,7 @@ public class PayCreditCard {
     public void shouldFieldWithPreviousMonthWithCredit() {
         var info = getPreviousMonthInField();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldMonthError("expiredDate");
+        creditPaymentPage.sendingValidDataWithFieldMonthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -138,7 +138,7 @@ public class PayCreditCard {
     public void shouldFieldWithZeroMonthWithCredit() {
         var info = getZeroMonthInField();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldMonthError("invalidData");
+        creditPaymentPage.sendingValidDataWithFieldMonthError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -147,7 +147,7 @@ public class PayCreditCard {
     public void shouldFieldWithThirteenMonthWithCredit() {
         var info = getThirteenMonthInField();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldMonthError("invalidData");
+        creditPaymentPage.sendingValidDataWithFieldMonthError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -155,7 +155,7 @@ public class PayCreditCard {
     public void shouldEmptyFieldYearWithCredit() {
         var info = getEmptyYear();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldYearError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldYearError("Неверный формат");
     }
 
     @Test
@@ -164,7 +164,7 @@ public class PayCreditCard {
     public void shouldPreviousYearFieldYearWithCredit() {
         var info = getPreviousYearInField();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldYearError("expiredDate");
+        creditPaymentPage.sendingValidDataWithFieldYearError("Истёк срок действия карты");
     }
 
     @Test
@@ -173,7 +173,7 @@ public class PayCreditCard {
     public void shouldPlusSixYearFieldYearWithCredit() {
         var info = getPlusSixYearInField();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldYearError("invalidData");
+        creditPaymentPage.sendingValidDataWithFieldYearError("Неверно указан срок действия карты");
     }
 
     @Test
@@ -181,7 +181,7 @@ public class PayCreditCard {
     public void shouldEmptyFieldNameWithCredit() {
         var info = getApprovedCard();
         creditPaymentPage.sendingEmptyNameValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Поле обязательно для заполнения");
     }
 
 
@@ -191,7 +191,7 @@ public class PayCreditCard {
     public void shouldSpecialSymbolInFieldNameWithCredit() {
         var info = getSpecialSymbolInFieldName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -200,7 +200,7 @@ public class PayCreditCard {
     public void shouldNumberInFieldNameWithCredit() {
         var info = getNumberInFieldName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -209,7 +209,7 @@ public class PayCreditCard {
     public void shouldRussianNameInFieldNameWithCredit() {
         var info = getRusName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
     @Test
@@ -218,7 +218,7 @@ public class PayCreditCard {
     public void shouldOnlySurnameInFieldNameWithCredit() {
         var info = getOnlySurnameInFieldName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
     }
 
 
@@ -228,7 +228,7 @@ public class PayCreditCard {
     public void shouldEmptyCVVInFieldCVVWithCredit() {
         var info = getEmptyCVVInFieldCVV();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldCVVError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldCVVError("Неверный формат");
     }
 
     @Test
@@ -237,7 +237,7 @@ public class PayCreditCard {
     public void shouldOneNumberInFieldCVVWithCredit() {
         var info = getOneNumberInFieldCVV();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldCVVError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldCVVError("Неверный формат");
     }
 
     @Test
@@ -246,6 +246,6 @@ public class PayCreditCard {
     public void shouldTwoNumberInFieldCVVWithCredit() {
         var info = getOTwoNumberInFieldCVV();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldCVVError("wrongFormatMsg");
+        creditPaymentPage.sendingValidDataWithFieldCVVError("Неверный формат");
     }
 }
