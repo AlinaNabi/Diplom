@@ -11,15 +11,6 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class PaymentPage {
-//    public void payDebitCard() {
-//        buttonBuy.click();
-//        buttonDebit.shouldBe(visible);
-//    }
-//
-//    public void buyCreditCard() {
-//        buttonBuyWithCredit.click();
-//        buttonCredit.shouldBe(visible);
-//    }
 
     protected static final SelenideElement formHeader = $x("//form//preceding-sibling::h3");
     private final SelenideElement cardNumberField = $x("//input[@placeholder='0000 0000 0000 0000']");

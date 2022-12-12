@@ -105,7 +105,7 @@ public class PayCreditCard {
     public void shouldFakerCardInFieldCardNumberWithCredit() {
         var info = getFakerNumberCardNumber();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFakerCardNumber("Ошибка! Банк отказал в проведении операции");
+        creditPaymentPage.sendingValidDataWithFakerCardNumber("Ошибка! Банк отказал в проведении операции.");
     }
 
     @Test
