@@ -26,9 +26,9 @@ ___
 5. Открыть второй терминал
 6. В новой вкладке терминала в IDEA запустить тесты:
 * Для MySQL:  
-  `./gradlew clean test -Durl=jdbc:mysql://localhost:3306/app`
+  `./gradlew clean test "-Ddb.url=jdbc:mysql://localhost:3306/app"`
 * Для PostgreSQL:  
-  `./gradlew clean test -Durl=jdbc:postgresql://localhost:5432/app`
+  `./gradlew clean test "-Ddb.url=jdbc:postgresql://localhost:5432/app"`
 7. Создать отчёт Allure  
    `.\gradlew allureServe`
 8. Для завершения работы allureServe выполнить команду

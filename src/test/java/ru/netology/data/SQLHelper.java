@@ -5,26 +5,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.ResultSetHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 
 public class SQLHelper {
-    private static Connection connection;
-    public static QueryRunner runner;
+    public static QueryRunner runner = new QueryRunner();
+    private static Connection connection = getConnection();
+
 
     @SneakyThrows
-    public static void start() {
-        runner = new QueryRunner();
-        connection = DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
-    }
+    private static Connection getConnection() {
+       try {
+           return DriverManager.getConnection(System.getProperty("db.url"), "app", "pass");
+    } catch (SQLException e) {
+           e.printStackTrace();
+       }
+           return null;
+       }
 
 
     @SneakyThrows
     public static void databaseCleanUp() {
-        start();
+
         var deleteFromOrder = "DELETE FROM order_entity;";
         var deleteFromCredit = "DELETE FROM credit_request_entity;";
         var deleteFromPayment = "DELETE FROM payment_entity;";
@@ -45,7 +52,6 @@ public class SQLHelper {
 
     @SneakyThrows
     public static CreditRequestEntity getCreditRequestInfo() {
-        start();
         var creditRequestInfo = "SELECT * FROM credit_request_entity ORDER BY created DESC;";
         return runner.query(connection, creditRequestInfo, new BeanHandler<>(CreditRequestEntity.class));
     }
@@ -64,10 +70,9 @@ public class SQLHelper {
 
     @SneakyThrows
     public static PaymentEntity getPaymentInfo() {
-        start();
         var paymentInfo = "SELECT * FROM payment_entity ORDER BY created DESC;";
-        return runner.query(connection, paymentInfo, new BeanHandler<>(PaymentEntity.class));
-    }
+        ResultSetHandler<PaymentEntity> resultSetHandler = new BeanHandler<>(PaymentEntity.class);
+        return runner.query(connection, paymentInfo, resultSetHandler);    }
 
 
     @Data
@@ -82,8 +87,8 @@ public class SQLHelper {
 
     @SneakyThrows
     public static OrderEntity getOrderInfo() {
-        start();
         var orderInfo = "SELECT * FROM order_entity ORDER BY created DESC;";
-        return runner.query(connection, orderInfo, new BeanHandler<>(OrderEntity.class));
+        ResultSetHandler<OrderEntity> resultSetHandler = new BeanHandler<>(OrderEntity.class);
+        return runner.query(connection, orderInfo, resultSetHandler);
     }
 }

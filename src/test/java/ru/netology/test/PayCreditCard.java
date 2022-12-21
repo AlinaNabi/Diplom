@@ -26,6 +26,7 @@ public class PayCreditCard {
 
     @BeforeEach
     public void openPage() {
+
         open("http://localhost:8080");
         MainPage mainPage = new MainPage();
         creditPaymentPage = mainPage.pressPayCreditCardButton();
@@ -34,6 +35,7 @@ public class PayCreditCard {
     @AfterEach
     void cleanDB() {
         SQLHelper.databaseCleanUp();
+
     }
 
     @AfterAll
@@ -105,7 +107,7 @@ public class PayCreditCard {
     public void shouldFakerCardInFieldCardNumberWithCredit() {
         var info = getFakerNumberCardNumber();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFakerCardNumber("Ошибка! Банк отказал в проведении операции.");
+        creditPaymentPage.sendingValidDataWithFakerCardNumber("Неверный формат");
     }
 
     @Test
@@ -138,7 +140,7 @@ public class PayCreditCard {
     public void shouldFieldWithZeroMonthWithCredit() {
         var info = getZeroMonthInField();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldMonthError("Ошибка! Банк отказал в проведении операции");
+        creditPaymentPage.sendingValidDataWithFieldMonthError("Неверный формат");
     }
 
     @Test
@@ -191,7 +193,7 @@ public class PayCreditCard {
     public void shouldSpecialSymbolInFieldNameWithCredit() {
         var info = getSpecialSymbolInFieldName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
     @Test
@@ -200,7 +202,7 @@ public class PayCreditCard {
     public void shouldNumberInFieldNameWithCredit() {
         var info = getNumberInFieldName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
     @Test
@@ -209,7 +211,7 @@ public class PayCreditCard {
     public void shouldRussianNameInFieldNameWithCredit() {
         var info = getRusName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
     @Test
@@ -218,7 +220,7 @@ public class PayCreditCard {
     public void shouldOnlySurnameInFieldNameWithCredit() {
         var info = getOnlySurnameInFieldName();
         creditPaymentPage.sendingValidData(info);
-        creditPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        creditPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
 

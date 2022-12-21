@@ -66,7 +66,7 @@ public class PayDebitCard {
         debitPaymentPage.sendingValidData(info);
         debitPaymentPage.bankDeclined();
         var paymentStatus = getPaymentInfo();
-        assertEquals("DECLINED", paymentStatus);
+        assertEquals("DECLINED", paymentStatus.getStatus());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class PayDebitCard {
     public void shouldFakerCardNumberFormDebit() {
         var info = getFakerNumberCardNumber();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFakerCardNumber("Ошибка! Банк отказал в проведении операции");
+        debitPaymentPage.sendingValidDataWithFakerCardNumber("Банк отказал в проведении операции");
     }
 
 
@@ -138,7 +138,7 @@ public class PayDebitCard {
     public void shouldFieldWithZeroMonthFormDebit() {
         var info = getZeroMonthInField();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldMonthError("Ошибка! Банк отказал в проведении операции");
+        debitPaymentPage.sendingValidDataWithFieldMonthError("Неверный формат");
     }
 
     @Test
@@ -191,7 +191,7 @@ public class PayDebitCard {
     public void shouldSpecialSymbolInFieldNameFormDebit() {
         var info = getSpecialSymbolInFieldName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
     @Test
@@ -200,7 +200,7 @@ public class PayDebitCard {
     public void shouldNumberInFieldNameFormDebit() {
         var info = getNumberInFieldName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
     @Test
@@ -209,7 +209,7 @@ public class PayDebitCard {
     public void shouldEnglishNameInFieldNameFormDebit() {
         var info = getRusName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
     @Test
@@ -217,7 +217,7 @@ public class PayDebitCard {
     public void shouldOnlySurnameFormDebit() {
         var info = getOnlySurnameInFieldName();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldNameError("Ошибка! Банк отказал в проведении операции");
+        debitPaymentPage.sendingValidDataWithFieldNameError("Неверный формат");
     }
 
     @Test
@@ -226,7 +226,7 @@ public class PayDebitCard {
     public void shouldEmptyCVVInFieldCVVFormDebit() {
         var info = getEmptyCVVInFieldCVV();
         debitPaymentPage.sendingValidData(info);
-        debitPaymentPage.sendingValidDataWithFieldCVVError("Неверный формат");
+        debitPaymentPage.sendingValidDataWithFieldCVVError("Поле обязательно для заполнения");
     }
 
     @Test
