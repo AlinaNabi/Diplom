@@ -6,8 +6,8 @@ ___
 ## Документация проекта:
 [1.Задание к диплому](https://github.com/AlinaNabi/Diplom/blob/main/Documents/Zadanie.md)  
 [2.План автоматизации](https://github.com/AlinaNabi/Diplom/blob/main/README.md)  
-[3.Отчет по итогам тестирования]()  
-[4.Отчет по итогам автоматизации]()  
+[3.Отчет по итогам тестирования](https://github.com/AlinaNabi/Diplom/blob/main/Documents/Report.md)  
+[4.Отчет по итогам автоматизации](https://github.com/AlinaNabi/Diplom/blob/main/Documents/Summary.md)  
   
 На локальном компьютере заранее должны быть установлены IntelliJ IDEA и Docker
 
